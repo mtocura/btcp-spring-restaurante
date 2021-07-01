@@ -6,13 +6,13 @@ public class Caixa {
     private Long id;
     private BigDecimal saldo;
     private BigDecimal valor;
-    private Pedido idPedido;
+    private Pedido pedido;
 
-    public Caixa(Long id, BigDecimal saldo, BigDecimal valor, Pedido idPedido) {
+    public Caixa(Long id, BigDecimal saldo, BigDecimal valor, Pedido pedido) {
         this.id = id;
         this.saldo = saldo;
         this.valor = valor;
-        this.idPedido = idPedido;
+        this.pedido = pedido;
     }
 
     public Long getId() {
@@ -27,7 +27,7 @@ public class Caixa {
         return valor;
     }
 
-    public Pedido getIdPedido() {
-        return idPedido;
+    public Pedido getPedido() {
+        return pedido;
     }
 }
