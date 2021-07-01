@@ -1,6 +1,7 @@
 package br.com.aula2.tt.restaurante.dao;
 
 import br.com.aula2.tt.restaurante.dto.MesaDTO;
+import br.com.aula2.tt.restaurante.entities.Caixa;
 import br.com.aula2.tt.restaurante.entities.Mesa;
 import br.com.aula2.tt.restaurante.entities.Pedido;
 import br.com.aula2.tt.restaurante.entities.Prato;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class MesaDAO {
     private static List<Mesa> mesas = new ArrayList<>();
+    private static List<Caixa> caixa = new ArrayList<>();
 
     public List<Mesa> getAllMesas() {
         return mesas;
@@ -61,21 +63,19 @@ public class MesaDAO {
         return value;
     }
 
-    public void addPedidoMesa(Pedido pedido, Mesa mesa) {
-        Optional<Mesa> mesaOptional = mesas.stream().filter(m -> m.getId() == mesa.getId()).findFirst();
+    public MesaDTO fecharConta(long id) {
+        Optional<Mesa> mesaOptional = mesas.stream().filter(m -> m.getId() == id).findFirst();
 
         if(mesaOptional.isPresent()) {
-            mesaOptional.get().getPedidos().add(pedido);
-        }
-    }
-
-    public Double valorTotalConsumido(Mesa mesa) {
-        Optional<Mesa> mesaOptional = mesas.stream().filter(m -> m.getId() == mesa.getId()).findFirst();
-
-        if(mesaOptional.isPresent()) {
-           return mesaOptional.get().getValorTotal();
+            caixa.add(new Caixa((long) caixa.size() + 1, mesaOptional.get().getValorTotal()));
+            mesaOptional.get().setPedidos(new ArrayList<>());
+            return new MesaDTO(mesaOptional.get());
         }
 
         return null;
+    }
+
+    public double caixa() {
+        return Caixa.getSaldo();
     }
 }

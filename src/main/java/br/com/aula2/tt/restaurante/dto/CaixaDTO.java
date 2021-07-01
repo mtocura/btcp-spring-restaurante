@@ -3,13 +3,13 @@ package br.com.aula2.tt.restaurante.dto;
 import java.math.BigDecimal;
 
 public class CaixaDTO {
-    private BigDecimal saldo;
+    private Double saldo;
 
-    public CaixaDTO(BigDecimal saldo) {
+    public CaixaDTO(Double saldo) {
         this.saldo = saldo;
     }
 
-    public BigDecimal getSaldo() {
+    public Double getSaldo() {
         return saldo;
     }
 }

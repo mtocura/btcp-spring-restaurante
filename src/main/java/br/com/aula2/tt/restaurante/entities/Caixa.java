@@ -1,33 +1,27 @@
 package br.com.aula2.tt.restaurante.entities;
 
-import java.math.BigDecimal;
+import br.com.aula2.tt.restaurante.dto.CaixaDTO;
 
 public class Caixa {
     private Long id;
-    private BigDecimal saldo;
-    private BigDecimal valor;
-    private Pedido pedido;
+    private static double saldo = 0.0;
+    private Double valor;
 
-    public Caixa(Long id, BigDecimal saldo, BigDecimal valor, Pedido pedido) {
+    public Caixa(Long id, Double valor) {
         this.id = id;
-        this.saldo = saldo;
         this.valor = valor;
-        this.pedido = pedido;
+        saldo += valor;
     }
 
     public Long getId() {
         return id;
     }
 
-    public BigDecimal getSaldo() {
+    public static double getSaldo() {
         return saldo;
     }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
+    public CaixaDTO getValor() {
+        return new CaixaDTO(Caixa.getSaldo());
     }
 }

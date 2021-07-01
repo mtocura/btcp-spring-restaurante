@@ -25,17 +25,6 @@ public class RestauranteController {
 
         return ResponseEntity.created(uri).build();
     }
-//
-//    @GetMapping("/mesa/{id}")
-//    public ResponseEntity<?> getMesaById(@PathVariable long id) {
-//        MesaDTO res = mesaDAO.findMesaById(id);
-//
-//        if(res != null) {
-//            return ResponseEntity.ok(res);
-//        } else {
-//            return ResponseEntity.badRequest().build();
-//        }
-//    }
 
     @GetMapping("/mesa")
     public ResponseEntity<?> getAllMesas() {
@@ -51,5 +40,21 @@ public class RestauranteController {
         }
 
         return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/mesa/{id}/checkout")
+    public ResponseEntity<?> checkout(@PathVariable long id) {
+        MesaDTO res = mesaDAO.fecharConta(id);
+
+        if(res != null) {
+            return ResponseEntity.ok(res);
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/caixa")
+    public ResponseEntity<?> saldo() {
+        return ResponseEntity.ok(mesaDAO.caixa());
     }
 }
