@@ -1,5 +1,6 @@
 package br.com.aula2.tt.restaurante.dto;
 
+import br.com.aula2.tt.restaurante.dao.MesaDAO;
 import br.com.aula2.tt.restaurante.entities.Mesa;
 import br.com.aula2.tt.restaurante.entities.Pedido;
 
@@ -8,9 +9,9 @@ import java.util.List;
 
 public class MesaDTO {
     private List<Pedido> pedidos;
-    private BigDecimal valorConsumido;
+    private Double valorConsumido;
 
-    public MesaDTO(List<Pedido> pedidos, BigDecimal valorConsumido) {
+    public MesaDTO(List<Pedido> pedidos, Double valorConsumido) {
         this.pedidos = pedidos;
         this.valorConsumido = valorConsumido;
     }
@@ -24,7 +25,7 @@ public class MesaDTO {
         return pedidos;
     }
 
-    public BigDecimal getValorConsumido() {
+    public Double getValorConsumido() {
         return valorConsumido;
     }
 }
