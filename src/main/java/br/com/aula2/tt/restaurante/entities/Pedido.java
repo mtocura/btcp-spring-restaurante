@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Pedido {
     private Long id;
-    private Mesa mesa;
+    private Long idMesa;
     private List<Prato> pratos;
-    private BigDecimal total;
+    private Double total;
 
-    public Pedido(Long id, Mesa mesa, List<Prato> pratos, BigDecimal total) {
+    public Pedido(Long id, Long idMesa, List<Prato> pratos, Double total) {
         this.id = id;
-        this.mesa = mesa;
+        this.idMesa = idMesa;
         this.pratos = pratos;
         this.total = total;
     }
@@ -20,15 +20,31 @@ public class Pedido {
         return id;
     }
 
-    public Mesa getMesa() {
-        return mesa;
+    public Long getIdMesa() {
+        return idMesa;
     }
 
     public List<Prato> getPratos() {
         return pratos;
     }
 
-    public BigDecimal getTotal() {
+    public Double getTotal() {
         return total;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setIdMesa(Long idMesa) {
+        this.idMesa = idMesa;
+    }
+
+    public void setPratos(List<Prato> pratos) {
+        this.pratos = pratos;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 }

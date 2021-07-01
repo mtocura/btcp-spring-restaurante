@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 public class Prato {
     private Long id;
-    private BigDecimal preco;
+    private Double preco;
     private String descricao;
-    private Double quantidade;
+    private Integer quantidade;
 
-    public Prato(Long id, BigDecimal preco, String descricao, Double quantidade) {
+    public Prato(Long id, Double preco, String descricao, Integer quantidade) {
         this.id = id;
         this.preco = preco;
         this.descricao = descricao;
@@ -19,7 +19,7 @@ public class Prato {
         return id;
     }
 
-    public BigDecimal getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
@@ -27,7 +27,7 @@ public class Prato {
         return descricao;
     }
 
-    public Double getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 }

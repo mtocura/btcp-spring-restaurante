@@ -6,9 +6,9 @@ import java.util.List;
 public class Mesa {
     private Long id;
     private List<Pedido> pedidos;
-    private BigDecimal valorTotal;
+    private Double valorTotal;
 
-    public Mesa(Long id, List<Pedido> pedidos, BigDecimal valorTotal) {
+    public Mesa(Long id, List<Pedido> pedidos, Double valorTotal) {
         this.id = id;
         this.pedidos = pedidos;
         this.valorTotal = valorTotal;
@@ -22,7 +22,19 @@ public class Mesa {
         return pedidos;
     }
 
-    public BigDecimal getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }
