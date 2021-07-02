@@ -146,8 +146,8 @@ public class MesaDAO {
         return null;
     }
 
-    public double caixa() {
-        return Caixa.getSaldo();
+    public CaixaDTO caixa() {
+        return new CaixaDTO(Caixa.getSaldo());
     }
 
     private static double totalPedidos(List<PratoDTO> pratos) {
