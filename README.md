@@ -9,32 +9,160 @@ Este repositório contém a resolução do exercício 1 da prática complementar
     - body request
     ````
     {
-        "pedidos": [
-            {
-                "pratos": [
-                    {
-                        "preco": 20.50,
-                        "descricao": "Teste",
-                        "quantidade": 1
-                    },
-                    {
-                        "preco": 20.50,
-                        "descricao": "Teste 2",
-                        "quantidade": 3
-                    }
-                ]
-            }
-        ]
+      "pedidos": [
+          {
+              "pratos": [
+                  {
+                      "preco": 20.50,
+                      "descricao": "Virada Paulista",
+                      "quantidade": 1
+                  },
+                  {
+                      "preco": 16.50,
+                      "descricao": "Bolo de Chocolate",
+                      "quantidade": 1
+                  }
+              ]
+          },
+          {
+              "pratos": [
+                  {
+                      "preco": 32.99,
+                      "descricao": "Pizza",
+                      "quantidade": 1
+                  },
+                  {
+                      "preco": 16.50,
+                      "descricao": "Torta",
+                      "quantidade": 1
+                  }
+              ]
+          }
+      ]
     }
     ````
+  - retorna o path onde foi criado o registro
   
   
 - GET ````` /aula2/tt/mesa `````
     - retorna todas as mesas registradas
+    - body response:
+    ````
+    [
+      {
+          "pedidos": [
+              {
+                  "pratos": [
+                      {
+                          "preco": 20.5,
+                          "descricao": "Virada Paulista",
+                          "quantidade": 1
+                      },
+                      {
+                          "preco": 16.5,
+                          "descricao": "Bolo de Chocolate",
+                          "quantidade": 1
+                      }
+                  ],
+                  "total": 37.0
+              },
+              {
+                  "pratos": [
+                      {
+                          "preco": 32.99,
+                          "descricao": "Pizza",
+                          "quantidade": 1
+                      },
+                      {
+                          "preco": 16.5,
+                          "descricao": "Torta",
+                          "quantidade": 1
+                      }
+                  ],
+                  "total": 49.49
+              }
+          ],
+          "valorTotal": 86.49000000000001
+      },
+      {
+          "pedidos": [
+              {
+                  "pratos": [
+                      {
+                          "preco": 20.5,
+                          "descricao": "Virada Paulista",
+                          "quantidade": 1
+                      },
+                      {
+                          "preco": 16.5,
+                          "descricao": "Bolo de Chocolate",
+                          "quantidade": 1
+                      }
+                  ],
+                  "total": 37.0
+              },
+              {
+                  "pratos": [
+                      {
+                          "preco": 32.99,
+                          "descricao": "Pizza",
+                          "quantidade": 1
+                      },
+                      {
+                          "preco": 16.5,
+                          "descricao": "Torta",
+                          "quantidade": 1
+                      }
+                  ],
+                  "total": 49.49
+              }
+          ],
+          "valorTotal": 86.49000000000001
+      }
+    ]
+    ````
     
 
 - GET ```` /aula2/tt/mesa/{id} ````
     - retorna todos os pedidos da mesa juntamente com o valor total
+    - body response:
+    ````
+    {
+        "pedidos": [
+            {
+                "pratos": [
+                    {
+                        "preco": 20.5,
+                        "descricao": "Virada Paulista",
+                        "quantidade": 1
+                    },
+                    {
+                        "preco": 16.5,
+                        "descricao": "Bolo de Chocolate",
+                        "quantidade": 1
+                    }
+                ],
+                "total": 37.0
+            },
+            {
+                "pratos": [
+                    {
+                        "preco": 32.99,
+                        "descricao": "Pizza",
+                        "quantidade": 1
+                    },
+                    {
+                        "preco": 16.5,
+                        "descricao": "Torta",
+                        "quantidade": 1
+                    }
+                ],
+                "total": 49.49
+            }
+        ],
+        "valorTotal": 86.49000000000001
+    }
+    ````
     
 
 - GET ```` /aula2/tt/mesa/{id}/checkout ````
@@ -50,4 +178,4 @@ Este repositório contém a resolução do exercício 1 da prática complementar
     ````
   
 - GET ````/aula2/tt/caixa ````
-    - retorna o saldo do caixa
+    - retorna o saldo do caixa (raw)
