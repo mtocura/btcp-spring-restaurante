@@ -178,4 +178,10 @@ Este repositório contém a resolução do exercício 1 da prática complementar
     ````
   
 - GET ````/aula2/tt/caixa ````
-    - retorna o saldo do caixa (raw)
+    - retorna o saldo do caixa
+    - body response:
+    `````
+    {
+      "saldo": 82.50
+    }
+    `````
