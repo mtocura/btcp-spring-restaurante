@@ -2,6 +2,7 @@ package br.com.aula2.tt.restaurante.controller;
 
 import br.com.aula2.tt.restaurante.dao.MesaDAO;
 import br.com.aula2.tt.restaurante.dto.MesaDTO;
+import br.com.aula2.tt.restaurante.dto.MesaResponseDTO;
 import br.com.aula2.tt.restaurante.entities.Mesa;
 import br.com.aula2.tt.restaurante.entities.Pedido;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +19,10 @@ public class RestauranteController {
     MesaDAO mesaDAO = new MesaDAO();
 
     @PostMapping("/mesa")
-    public ResponseEntity<?> mesa(@RequestBody Mesa mesa, UriComponentsBuilder uriBuilder) {
-        Mesa m = mesaDAO.addMesa(mesa);
+    public ResponseEntity<?> mesa(@RequestBody MesaDTO mesaDTO, UriComponentsBuilder uriBuilder) {
+        Mesa mesa = mesaDAO.addMesa(mesaDTO);
 
-        URI uri = uriBuilder.path("/aula2/tt/mesa/{id}").buildAndExpand(m.getId()).toUri();
+        URI uri = uriBuilder.path("/aula2/tt/mesa/{id}").buildAndExpand(mesa.getId()).toUri();
 
         return ResponseEntity.created(uri).build();
     }
@@ -33,7 +34,7 @@ public class RestauranteController {
 
     @GetMapping("/mesa/{id}")
     public ResponseEntity<?> getPedidosMesa(@PathVariable long id) {
-        MesaDTO mesaDTO = mesaDAO.findMesaById(id);
+        MesaResponseDTO mesaDTO = mesaDAO.findMesaById(id);
 
         if(mesaDTO != null) {
             return ResponseEntity.ok(mesaDTO);
@@ -44,7 +45,7 @@ public class RestauranteController {
 
     @GetMapping("/mesa/{id}/checkout")
     public ResponseEntity<?> checkout(@PathVariable long id) {
-        MesaDTO res = mesaDAO.fecharConta(id);
+        MesaResponseDTO res = mesaDAO.fecharConta(id);
 
         if(res != null) {
             return ResponseEntity.ok(res);
